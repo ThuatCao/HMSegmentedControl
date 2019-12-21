@@ -1,40 +1,40 @@
 //
-//  HMSegmentedControl.m
-//  HMSegmentedControl
+//  NHMSegmentedControl.m
+//  NHMSegmentedControl
 //
 //  Created by Hesham Abd-Elmegid on 23/12/12.
 //  Copyright (c) 2012-2015 Hesham Abd-Elmegid. All rights reserved.
 //
 
-#import "HMSegmentedControl.h"
+#import "NHMSegmentedControl.h"
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 
-@protocol HMAccessibilityDelegate <NSObject>
+@protocol NHMAccessibilityDelegate <NSObject>
 @required
 -(void)scrollToAccessibilityElement:(id)sender;
 @end
 
-@interface HMAccessibilityElement : UIAccessibilityElement
-@property (nonatomic, weak) id<HMAccessibilityDelegate> delegate;
+@interface NHMAccessibilityElement : UIAccessibilityElement
+@property (nonatomic, weak) id<NHMAccessibilityDelegate> delegate;
 @end
 
-@interface HMScrollView : UIScrollView
+@interface NHMScrollView : UIScrollView
 @end
 
-@interface HMSegmentedControl () <UIScrollViewDelegate, HMAccessibilityDelegate>
+@interface NHMSegmentedControl () <UIScrollViewDelegate, NHMAccessibilityDelegate>
 
 @property (nonatomic, strong) CALayer *selectionIndicatorStripLayer;
 @property (nonatomic, strong) CALayer *selectionIndicatorBoxLayer;
 @property (nonatomic, strong) CALayer *selectionIndicatorArrowLayer;
 @property (nonatomic, readwrite) CGFloat segmentWidth;
 @property (nonatomic, readwrite) NSArray<NSNumber *> *segmentWidthsArray;
-@property (nonatomic, strong) HMScrollView *scrollView;
+@property (nonatomic, strong) NHMScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *accessibilityElements;
 
 @end
 
-@implementation HMAccessibilityElement
+@implementation NHMAccessibilityElement
 
 - (void)accessibilityElementDidBecomeFocused
 {
@@ -44,7 +44,7 @@
 
 @end
 
-@implementation HMScrollView
+@implementation NHMScrollView
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (!self.dragging) {
@@ -72,7 +72,7 @@
 
 @end
 
-@implementation HMSegmentedControl
+@implementation NHMSegmentedControl
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -98,7 +98,7 @@
     if (self) {
         [self commonInit];
         self.sectionTitles = sectiontitles;
-        self.type = HMSegmentedControlTypeText;
+        self.type = NHMSegmentedControlTypeText;
     }
     
     return self;
@@ -111,7 +111,7 @@
         [self commonInit];
         self.sectionImages = sectionImages;
         self.sectionSelectedImages = sectionSelectedImages;
-        self.type = HMSegmentedControlTypeImages;
+        self.type = NHMSegmentedControlTypeImages;
     }
     
     return self;
@@ -130,7 +130,7 @@
         self.sectionImages = sectionImages;
         self.sectionSelectedImages = sectionSelectedImages;
 		self.sectionTitles = sectiontitles;
-        self.type = HMSegmentedControlTypeTextImages;
+        self.type = NHMSegmentedControlTypeTextImages;
     }
     
     return self;
@@ -143,7 +143,7 @@
 }
 
 - (void)commonInit {
-    self.scrollView = [[HMScrollView alloc] init];
+    self.scrollView = [[NHMScrollView alloc] init];
     self.scrollView.delegate = self;
     self.scrollView.scrollsToTop = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -159,13 +159,13 @@
     self.segmentEdgeInset = UIEdgeInsetsMake(0, 5, 0, 5);
     self.selectionIndicatorHeight = 5.0f;
     self.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
-    self.selectionStyle = HMSegmentedControlSelectionStyleTextWidthStripe;
-    self.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationUp;
-    self.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
+    self.selectionStyle = NHMSegmentedControlSelectionStyleTextWidthStripe;
+    self.selectionIndicatorLocation = NHMSegmentedControlSelectionIndicatorLocationUp;
+    self.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleFixed;
     self.userDraggable = YES;
     self.touchEnabled = YES;
     self.verticalDividerEnabled = NO;
-    self.type = HMSegmentedControlTypeText;
+    self.type = NHMSegmentedControlTypeText;
     self.verticalDividerWidth = 1.0f;
     _verticalDividerColor = [UIColor blackColor];
     self.borderColor = [UIColor blackColor];
@@ -209,10 +209,10 @@
     [self setNeedsDisplay];
 }
 
-- (void)setSelectionIndicatorLocation:(HMSegmentedControlSelectionIndicatorLocation)selectionIndicatorLocation {
+- (void)setSelectionIndicatorLocation:(NHMSegmentedControlSelectionIndicatorLocation)selectionIndicatorLocation {
 	_selectionIndicatorLocation = selectionIndicatorLocation;
 	
-	if (selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationNone) {
+	if (selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationNone) {
 		self.selectionIndicatorHeight = 0.0f;
 	}
 }
@@ -223,16 +223,16 @@
     self.selectionIndicatorBoxLayer.opacity = _selectionIndicatorBoxOpacity;
 }
 
-- (void)setSegmentWidthStyle:(HMSegmentedControlSegmentWidthStyle)segmentWidthStyle {
-    // Force HMSegmentedControlSegmentWidthStyleFixed when type is HMSegmentedControlTypeImages.
-    if (self.type == HMSegmentedControlTypeImages) {
-        _segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
+- (void)setSegmentWidthStyle:(NHMSegmentedControlSegmentWidthStyle)segmentWidthStyle {
+    // Force NHMSegmentedControlSegmentWidthStyleFixed when type is NHMSegmentedControlTypeImages.
+    if (self.type == NHMSegmentedControlTypeImages) {
+        _segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleFixed;
     } else {
         _segmentWidthStyle = segmentWidthStyle;
     }
 }
 
-- (void)setBorderType:(HMSegmentedControlBorderType)borderType {
+- (void)setBorderType:(NHMSegmentedControlBorderType)borderType {
     _borderType = borderType;
     [self setNeedsDisplay];
 }
@@ -308,7 +308,7 @@
     if (self.accessibilityElements==nil)
         self.accessibilityElements = [NSMutableArray arrayWithCapacity:0];
     
-    if (self.type == HMSegmentedControlTypeText) {
+    if (self.type == NHMSegmentedControlTypeText) {
         [self.sectionTitles enumerateObjectsUsingBlock:^(id titleString, NSUInteger idx, BOOL *stop) {
 
             CGFloat stringWidth = 0;
@@ -320,12 +320,12 @@
             CGRect fullRect = CGRectZero;
             
             // Text inside the CATextLayer will appear blurry unless the rect values are rounded
-            BOOL locationUp = (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationUp);
-            BOOL selectionStyleNotBox = (self.selectionStyle != HMSegmentedControlSelectionStyleBox);
+            BOOL locationUp = (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp);
+            BOOL selectionStyleNotBox = (self.selectionStyle != NHMSegmentedControlSelectionStyleBox);
 
             CGFloat y = roundf((CGRectGetHeight(self.frame) - selectionStyleNotBox * self.selectionIndicatorHeight) / 2 - stringHeight / 2 + self.selectionIndicatorHeight * locationUp);
             CGRect rect;
-            if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
+            if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
                 rect = CGRectMake((self.segmentWidth * idx) + (self.segmentWidth - stringWidth) / 2, y, stringWidth, stringHeight);
                 rectDiv = CGRectMake((self.segmentWidth * idx) - (self.verticalDividerWidth / 2), self.selectionIndicatorHeight * 2, self.verticalDividerWidth, self.frame.size.height - (self.selectionIndicatorHeight * 4));
                 fullRect = CGRectMake(self.segmentWidth * idx, 0, self.segmentWidth, oldRect.size.height);
@@ -370,7 +370,7 @@
             }
             
             if ([self.accessibilityElements count]<=idx) {
-                HMAccessibilityElement *element = [[HMAccessibilityElement alloc] initWithAccessibilityContainer:self];
+                NHMAccessibilityElement *element = [[NHMAccessibilityElement alloc] initWithAccessibilityContainer:self];
                 element.delegate = self;
                 element.accessibilityLabel = (self.sectionTitles!=nil&&[self.sectionTitles count]>idx)?[self.sectionTitles objectAtIndex:idx]:[NSString stringWithFormat:@"item %u", (unsigned)idx+1];
                 element.accessibilityFrame = [self convertRect:fullRect toView:nil];
@@ -382,10 +382,10 @@
             } else {
                 CGFloat offset = 0.f;
                 for (int i = 0; i<idx; i++) {
-                    HMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
+                    NHMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
                     offset += accessibilityItem.accessibilityFrame.size.width;
                 }
-                HMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
+                NHMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
                 CGRect newRect = CGRectMake(offset-self.scrollView.contentOffset.x, 0, element.accessibilityFrame.size.width, element.accessibilityFrame.size.height);
                 element.accessibilityFrame = [self convertRect:newRect toView:nil];
                 if (self.selectedSegmentIndex==idx)
@@ -396,12 +396,12 @@
         
             [self addBackgroundAndBorderLayerWithRect:fullRect];
         }];
-    } else if (self.type == HMSegmentedControlTypeImages) {
+    } else if (self.type == NHMSegmentedControlTypeImages) {
         [self.sectionImages enumerateObjectsUsingBlock:^(id iconImage, NSUInteger idx, BOOL *stop) {
             UIImage *icon = iconImage;
             CGFloat imageWidth = icon.size.width;
             CGFloat imageHeight = icon.size.height;
-            CGFloat y = roundf(CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2 - imageHeight / 2 + ((self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationUp) ? self.selectionIndicatorHeight : 0);
+            CGFloat y = roundf(CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2 - imageHeight / 2 + ((self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) ? self.selectionIndicatorHeight : 0);
             CGFloat x = self.segmentWidth * idx + (self.segmentWidth - imageWidth)/2.0f;
             CGRect rect = CGRectMake(x, y, imageWidth, imageHeight);
             
@@ -430,7 +430,7 @@
             }
             
             if ([self.accessibilityElements count]<=idx) {
-                HMAccessibilityElement *element = [[HMAccessibilityElement alloc] initWithAccessibilityContainer:self];
+                NHMAccessibilityElement *element = [[NHMAccessibilityElement alloc] initWithAccessibilityContainer:self];
                 element.delegate = self;
                 element.accessibilityLabel = (self.sectionTitles!=nil&&[self.sectionTitles count]>idx)?[self.sectionTitles objectAtIndex:idx]:[NSString stringWithFormat:@"item %u", (unsigned)idx+1];
                 element.accessibilityFrame = [self convertRect:rect toView:nil];
@@ -442,10 +442,10 @@
             } else {
                 CGFloat offset = 0.f;
                 for (int i = 0; i<idx; i++) {
-                    HMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
+                    NHMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
                     offset += accessibilityItem.accessibilityFrame.size.width;
                 }
-                HMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
+                NHMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
                 CGRect newRect = CGRectMake(offset-self.scrollView.contentOffset.x, 0, element.accessibilityFrame.size.width, element.accessibilityFrame.size.height);
                 element.accessibilityFrame = [self convertRect:newRect toView:nil];
                 if (self.selectedSegmentIndex==idx)
@@ -456,7 +456,7 @@
             
             [self addBackgroundAndBorderLayerWithRect:rect];
         }];
-    } else if (self.type == HMSegmentedControlTypeTextImages){
+    } else if (self.type == NHMSegmentedControlTypeTextImages){
 		[self.sectionImages enumerateObjectsUsingBlock:^(id iconImage, NSUInteger idx, BOOL *stop) {
             UIImage *icon = iconImage;
             CGFloat imageWidth = icon.size.width;
@@ -472,11 +472,11 @@
             CGFloat textYOffset  = ceilf((self.frame.size.height - stringHeight) / 2.0);
             
             
-            if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
-                BOOL isImageInLineWidthText = self.imagePosition == HMSegmentedControlImagePositionLeftOfText || self.imagePosition == HMSegmentedControlImagePositionRightOfText;
+            if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
+                BOOL isImageInLineWidthText = self.imagePosition == NHMSegmentedControlImagePositionLeftOfText || self.imagePosition == NHMSegmentedControlImagePositionRightOfText;
                 if (isImageInLineWidthText) {
                     CGFloat whitespace = self.segmentWidth - stringSize.width - imageWidth - self.textImageSpacing;
-                    if (self.imagePosition == HMSegmentedControlImagePositionLeftOfText) {
+                    if (self.imagePosition == NHMSegmentedControlImagePositionLeftOfText) {
                         imageXOffset += whitespace / 2.0;
                         textXOffset = imageXOffset + imageWidth + self.textImageSpacing;
                     } else {
@@ -488,15 +488,15 @@
                     textXOffset  = self.segmentWidth * idx + (self.segmentWidth - stringWidth) / 2.0f;
                     
                     CGFloat whitespace = CGRectGetHeight(self.frame) - imageHeight - stringHeight - self.textImageSpacing;
-                    if (self.imagePosition == HMSegmentedControlImagePositionAboveText) {
+                    if (self.imagePosition == NHMSegmentedControlImagePositionAboveText) {
                         imageYOffset = ceilf(whitespace / 2.0);
                         textYOffset = imageYOffset + imageHeight + self.textImageSpacing;
-                    } else if (self.imagePosition == HMSegmentedControlImagePositionBelowText) {
+                    } else if (self.imagePosition == NHMSegmentedControlImagePositionBelowText) {
                         textYOffset = ceilf(whitespace / 2.0);
                         imageYOffset = textYOffset + stringHeight + self.textImageSpacing;
                     }
                 }
-            } else if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+            } else if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
                 // When we are drawing dynamic widths, we need to loop the widths array to calculate the xOffset
                 CGFloat xOffset = 0;
                 NSInteger i = 0;
@@ -510,9 +510,9 @@
                     i++;
                 }
                 
-                BOOL isImageInLineWidthText = self.imagePosition == HMSegmentedControlImagePositionLeftOfText || self.imagePosition == HMSegmentedControlImagePositionRightOfText;
+                BOOL isImageInLineWidthText = self.imagePosition == NHMSegmentedControlImagePositionLeftOfText || self.imagePosition == NHMSegmentedControlImagePositionRightOfText;
                 if (isImageInLineWidthText) {
-                    if (self.imagePosition == HMSegmentedControlImagePositionLeftOfText) {
+                    if (self.imagePosition == NHMSegmentedControlImagePositionLeftOfText) {
                         imageXOffset = xOffset;
                         textXOffset = imageXOffset + imageWidth + self.textImageSpacing;
                     } else {
@@ -524,10 +524,10 @@
                     textXOffset  = xOffset + ([self.segmentWidthsArray[i] floatValue] - stringWidth) / 2.0f;
                     
                     CGFloat whitespace = CGRectGetHeight(self.frame) - imageHeight - stringHeight - self.textImageSpacing;
-                    if (self.imagePosition == HMSegmentedControlImagePositionAboveText) {
+                    if (self.imagePosition == NHMSegmentedControlImagePositionAboveText) {
                         imageYOffset = ceilf(whitespace / 2.0);
                         textYOffset = imageYOffset + imageHeight + self.textImageSpacing;
-                    } else if (self.imagePosition == HMSegmentedControlImagePositionBelowText) {
+                    } else if (self.imagePosition == NHMSegmentedControlImagePositionBelowText) {
                         textYOffset = ceilf(whitespace / 2.0);
                         imageYOffset = textYOffset + stringHeight + self.textImageSpacing;
                     }
@@ -563,7 +563,7 @@
             [self.scrollView.layer addSublayer:titleLayer];
             
             if ([self.accessibilityElements count]<=idx) {
-                HMAccessibilityElement *element = [[HMAccessibilityElement alloc] initWithAccessibilityContainer:self];
+                NHMAccessibilityElement *element = [[NHMAccessibilityElement alloc] initWithAccessibilityContainer:self];
                 element.delegate = self;
                 element.accessibilityLabel = (self.sectionTitles!=nil&&[self.sectionTitles count]>idx)?[self.sectionTitles objectAtIndex:idx]:[NSString stringWithFormat:@"item %u", (unsigned)idx+1];
                 element.accessibilityFrame = [self convertRect:CGRectUnion(textRect, imageRect) toView:nil];
@@ -575,10 +575,10 @@
             } else {
                 CGFloat offset = 0.f;
                 for (int i = 0; i<idx; i++) {
-                    HMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
+                    NHMAccessibilityElement *accessibilityItem = [self.accessibilityElements objectAtIndex:i];
                     offset += accessibilityItem.accessibilityFrame.size.width;
                 }
-                HMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
+                NHMAccessibilityElement *element = [self.accessibilityElements objectAtIndex:idx];
                 CGRect newRect = CGRectMake(offset-self.scrollView.contentOffset.x, 0, element.accessibilityFrame.size.width, element.accessibilityFrame.size.height);
                 element.accessibilityFrame = [self convertRect:newRect toView:nil];
                 if (self.selectedSegmentIndex==idx)
@@ -592,8 +592,8 @@
 	}
     
     // Add the selection indicators
-    if (self.selectedSegmentIndex != HMSegmentedControlNoSegment) {
-        if (self.selectionStyle == HMSegmentedControlSelectionStyleArrow) {
+    if (self.selectedSegmentIndex != NHMSegmentedControlNoSegment) {
+        if (self.selectionStyle == NHMSegmentedControlSelectionStyleArrow) {
             if (!self.selectionIndicatorArrowLayer.superlayer) {
                 [self setArrowFrame];
                 [self.scrollView.layer addSublayer:self.selectionIndicatorArrowLayer];
@@ -603,7 +603,7 @@
                 self.selectionIndicatorStripLayer.frame = [self frameForSelectionIndicator];
                 [self.scrollView.layer addSublayer:self.selectionIndicatorStripLayer];
                 
-                if (self.selectionStyle == HMSegmentedControlSelectionStyleBox && !self.selectionIndicatorBoxLayer.superlayer) {
+                if (self.selectionStyle == NHMSegmentedControlSelectionStyleBox && !self.selectionIndicatorBoxLayer.superlayer) {
                     self.selectionIndicatorBoxLayer.frame = [self frameForFillerSelectionIndicator];
                     [self.scrollView.layer insertSublayer:self.selectionIndicatorBoxLayer atIndex:0];
                 }
@@ -619,25 +619,25 @@
     [self.layer insertSublayer:backgroundLayer atIndex:0];
     
     // Border layer
-    if (self.borderType & HMSegmentedControlBorderTypeTop) {
+    if (self.borderType & NHMSegmentedControlBorderTypeTop) {
         CALayer *borderLayer = [CALayer layer];
         borderLayer.frame = CGRectMake(0, 0, fullRect.size.width, self.borderWidth);
         borderLayer.backgroundColor = self.borderColor.CGColor;
         [backgroundLayer addSublayer: borderLayer];
     }
-    if (self.borderType & HMSegmentedControlBorderTypeLeft) {
+    if (self.borderType & NHMSegmentedControlBorderTypeLeft) {
         CALayer *borderLayer = [CALayer layer];
         borderLayer.frame = CGRectMake(0, 0, self.borderWidth, fullRect.size.height);
         borderLayer.backgroundColor = self.borderColor.CGColor;
         [backgroundLayer addSublayer: borderLayer];
     }
-    if (self.borderType & HMSegmentedControlBorderTypeBottom) {
+    if (self.borderType & NHMSegmentedControlBorderTypeBottom) {
         CALayer *borderLayer = [CALayer layer];
         borderLayer.frame = CGRectMake(0, fullRect.size.height - self.borderWidth, fullRect.size.width, self.borderWidth);
         borderLayer.backgroundColor = self.borderColor.CGColor;
         [backgroundLayer addSublayer: borderLayer];
     }
-    if (self.borderType & HMSegmentedControlBorderTypeRight) {
+    if (self.borderType & NHMSegmentedControlBorderTypeRight) {
         CALayer *borderLayer = [CALayer layer];
         borderLayer.frame = CGRectMake(fullRect.size.width - self.borderWidth, 0, self.borderWidth, fullRect.size.height);
         borderLayer.backgroundColor = self.borderColor.CGColor;
@@ -656,13 +656,13 @@
     CGPoint p2 = CGPointZero;
     CGPoint p3 = CGPointZero;
     
-    if (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationDown) {
+    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
         p1 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width / 2, 0);
         p2 = CGPointMake(0, self.selectionIndicatorArrowLayer.bounds.size.height);
         p3 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width, self.selectionIndicatorArrowLayer.bounds.size.height);
     }
     
-    if (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationUp) {
+    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
         p1 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width / 2, self.selectionIndicatorArrowLayer.bounds.size.height);
         p2 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width, 0);
         p3 = CGPointMake(0, 0);
@@ -682,47 +682,55 @@
 - (CGRect)frameForSelectionIndicator {
     CGFloat indicatorYOffset = 0.0f;
     
-    if (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationDown) {
+    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
         indicatorYOffset = self.bounds.size.height - self.selectionIndicatorHeight + self.selectionIndicatorEdgeInsets.bottom;
     }
     
-    if (self.selectionIndicatorLocation == HMSegmentedControlSelectionIndicatorLocationUp) {
+    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
         indicatorYOffset = self.selectionIndicatorEdgeInsets.top;
     }
     
     CGFloat sectionWidth = 0.0f;
     
-    if (self.type == HMSegmentedControlTypeText) {
+    if (self.type == NHMSegmentedControlTypeText) {
         CGFloat stringWidth = [self measureTitleAtIndex:self.selectedSegmentIndex].width;
         sectionWidth = stringWidth;
-    } else if (self.type == HMSegmentedControlTypeImages) {
+    } else if (self.type == NHMSegmentedControlTypeImages) {
         UIImage *sectionImage = [self.sectionImages objectAtIndex:self.selectedSegmentIndex];
         CGFloat imageWidth = sectionImage.size.width;
         sectionWidth = imageWidth;
-    } else if (self.type == HMSegmentedControlTypeTextImages) {
+    } else if (self.type == NHMSegmentedControlTypeTextImages) {
 		CGFloat stringWidth = [self measureTitleAtIndex:self.selectedSegmentIndex].width;
 		UIImage *sectionImage = [self.sectionImages objectAtIndex:self.selectedSegmentIndex];
 		CGFloat imageWidth = sectionImage.size.width;
         sectionWidth = MAX(stringWidth, imageWidth);
 	}
     
-    if (self.selectionStyle == HMSegmentedControlSelectionStyleArrow) {
+    if (self.selectionStyle == NHMSegmentedControlSelectionStyleArrow) {
         CGFloat widthToEndOfSelectedSegment = (self.segmentWidth * self.selectedSegmentIndex) + self.segmentWidth;
         CGFloat widthToStartOfSelectedIndex = (self.segmentWidth * self.selectedSegmentIndex);
         
         CGFloat x = widthToStartOfSelectedIndex + ((widthToEndOfSelectedSegment - widthToStartOfSelectedIndex) / 2) - (self.selectionIndicatorHeight/2);
         return CGRectMake(x - (self.selectionIndicatorHeight / 2), indicatorYOffset, self.selectionIndicatorHeight * 2, self.selectionIndicatorHeight);
     } else {
-        if (self.selectionStyle == HMSegmentedControlSelectionStyleTextWidthStripe &&
+        if (self.selectionStyle == NHMSegmentedControlSelectionStyleTextWidthStripe &&
             sectionWidth <= self.segmentWidth &&
-            self.segmentWidthStyle != HMSegmentedControlSegmentWidthStyleDynamic) {
+            self.segmentWidthStyle != NHMSegmentedControlSegmentWidthStyleDynamic) {
             CGFloat widthToEndOfSelectedSegment = (self.segmentWidth * self.selectedSegmentIndex) + self.segmentWidth;
             CGFloat widthToStartOfSelectedIndex = (self.segmentWidth * self.selectedSegmentIndex);
             
             CGFloat x = ((widthToEndOfSelectedSegment - widthToStartOfSelectedIndex) / 2) + (widthToStartOfSelectedIndex - sectionWidth / 2);
             return CGRectMake(x + self.selectionIndicatorEdgeInsets.left, indicatorYOffset, sectionWidth - self.selectionIndicatorEdgeInsets.right, self.selectionIndicatorHeight);
+        } else if (self.selectionStyle == NNHMSegmentedControlSelectionStyleMidleText &&
+                   sectionWidth <= self.segmentWidth &&
+                   self.segmentWidthStyle != NHMSegmentedControlSegmentWidthStyleDynamic) {
+            CGFloat widthToEndOfSelectedSegment = (self.segmentWidth * self.selectedSegmentIndex) + (self.segmentWidth + 32 ) / 2;
+            CGFloat widthToStartOfSelectedIndex = (self.segmentWidth * self.selectedSegmentIndex) + (self.segmentWidth - 32 ) / 2;;
+            
+            CGFloat x = widthToStartOfSelectedIndex;//((widthToEndOfSelectedSegment - widthToStartOfSelectedIndex) / 2) + (widthToStartOfSelectedIndex - 32 / 2);
+            return CGRectMake(x + self.selectionIndicatorEdgeInsets.left, indicatorYOffset, /* sectionWidth - self.selectionIndicatorEdgeInsets.right*/ 32, self.selectionIndicatorHeight);
         } else {
-            if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+            if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
                 CGFloat selectedSegmentOffset = 0.0f;
                 
                 NSInteger i = 0;
@@ -741,7 +749,7 @@
 }
 
 - (CGRect)frameForFillerSelectionIndicator {
-    if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+    if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
         CGFloat selectedSegmentOffset = 0.0f;
         
         NSInteger i = 0;
@@ -767,12 +775,12 @@
         self.segmentWidth = self.frame.size.width / [self sectionCount];
     }
     
-    if (self.type == HMSegmentedControlTypeText && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
+    if (self.type == NHMSegmentedControlTypeText && self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
         [self.sectionTitles enumerateObjectsUsingBlock:^(id titleString, NSUInteger idx, BOOL *stop) {
             CGFloat stringWidth = [self measureTitleAtIndex:idx].width + self.segmentEdgeInset.left + self.segmentEdgeInset.right;
             self.segmentWidth = MAX(stringWidth, self.segmentWidth);
         }];
-    } else if (self.type == HMSegmentedControlTypeText && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+    } else if (self.type == NHMSegmentedControlTypeText && self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
         NSMutableArray *mutableSegmentWidths = [NSMutableArray array];
         __block CGFloat totalWidth = 0.0;
 
@@ -792,18 +800,18 @@
         }
 
         self.segmentWidthsArray = [mutableSegmentWidths copy];
-    } else if (self.type == HMSegmentedControlTypeImages) {
+    } else if (self.type == NHMSegmentedControlTypeImages) {
         for (UIImage *sectionImage in self.sectionImages) {
             CGFloat imageWidth = sectionImage.size.width + self.segmentEdgeInset.left + self.segmentEdgeInset.right;
             self.segmentWidth = MAX(imageWidth, self.segmentWidth);
         }
-    } else if (self.type == HMSegmentedControlTypeTextImages && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed){
+    } else if (self.type == NHMSegmentedControlTypeTextImages && self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed){
         //lets just use the title.. we will assume it is wider then images...
         [self.sectionTitles enumerateObjectsUsingBlock:^(id titleString, NSUInteger idx, BOOL *stop) {
             CGFloat stringWidth = [self measureTitleAtIndex:idx].width + self.segmentEdgeInset.left + self.segmentEdgeInset.right;
             self.segmentWidth = MAX(stringWidth, self.segmentWidth);
         }];
-    } else if (self.type == HMSegmentedControlTypeTextImages && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+    } else if (self.type == NHMSegmentedControlTypeTextImages && self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
         NSMutableArray *mutableSegmentWidths = [NSMutableArray array];
         __block CGFloat totalWidth = 0.0;
         
@@ -814,7 +822,7 @@
             CGFloat imageWidth = sectionImage.size.width + self.segmentEdgeInset.left;
             
             CGFloat combinedWidth = 0.0;
-            if (self.imagePosition == HMSegmentedControlImagePositionLeftOfText || self.imagePosition == HMSegmentedControlImagePositionRightOfText) {
+            if (self.imagePosition == NHMSegmentedControlImagePositionLeftOfText || self.imagePosition == NHMSegmentedControlImagePositionRightOfText) {
                 combinedWidth = imageWidth + stringWidth + self.textImageSpacing;
             } else {
                 combinedWidth = MAX(imageWidth, stringWidth);
@@ -842,10 +850,10 @@
 }
 
 - (NSUInteger)sectionCount {
-    if (self.type == HMSegmentedControlTypeText) {
+    if (self.type == NHMSegmentedControlTypeText) {
         return self.sectionTitles.count;
-    } else if (self.type == HMSegmentedControlTypeImages ||
-               self.type == HMSegmentedControlTypeTextImages) {
+    } else if (self.type == NHMSegmentedControlTypeImages ||
+               self.type == NHMSegmentedControlTypeTextImages) {
         return self.sectionImages.count;
     }
     
@@ -875,9 +883,9 @@
     
     if (CGRectContainsPoint(enlargeRect, touchLocation)) {
         NSInteger segment = 0;
-        if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
+        if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
             segment = (touchLocation.x + self.scrollView.contentOffset.x) / self.segmentWidth;
-        } else if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+        } else if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
             // To know which segment the user touched, we need to loop over the widths and substract it from the x position.
             CGFloat widthLeft = (touchLocation.x + self.scrollView.contentOffset.x);
             for (NSNumber *width in self.segmentWidthsArray) {
@@ -893,9 +901,9 @@
         
         NSUInteger sectionsCount = 0;
         
-        if (self.type == HMSegmentedControlTypeImages) {
+        if (self.type == NHMSegmentedControlTypeImages) {
             sectionsCount = [self.sectionImages count];
-        } else if (self.type == HMSegmentedControlTypeTextImages || self.type == HMSegmentedControlTypeText) {
+        } else if (self.type == NHMSegmentedControlTypeTextImages || self.type == NHMSegmentedControlTypeText) {
             sectionsCount = [self.sectionTitles count];
         }
         
@@ -910,9 +918,9 @@
 #pragma mark - Scrolling
 
 - (CGFloat)totalSegmentedControlWidth {
-    if (self.type == HMSegmentedControlTypeText && self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
+    if (self.type == NHMSegmentedControlTypeText && self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
         return self.sectionTitles.count * self.segmentWidth;
-    } else if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
+    } else if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleDynamic) {
         return [[self.segmentWidthsArray valueForKeyPath:@"@sum.self"] floatValue];
     } else {
         return self.sectionImages.count * self.segmentWidth;
@@ -926,7 +934,7 @@
 - (void)scrollTo:(NSUInteger)index animated:(BOOL)animated {
     CGRect rectForSelectedIndex = CGRectZero;
     CGFloat selectedSegmentOffset = 0;
-    if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
+    if (self.segmentWidthStyle == NHMSegmentedControlSegmentWidthStyleFixed) {
         rectForSelectedIndex = CGRectMake(self.segmentWidth * index,
                                           0,
                                           self.segmentWidth,
@@ -972,7 +980,7 @@
     _selectedSegmentIndex = index;
     [self setNeedsDisplay];
     
-    if (index == HMSegmentedControlNoSegment) {
+    if (index == NHMSegmentedControlNoSegment) {
         [self.selectionIndicatorArrowLayer removeFromSuperlayer];
         [self.selectionIndicatorStripLayer removeFromSuperlayer];
         [self.selectionIndicatorBoxLayer removeFromSuperlayer];
@@ -983,7 +991,7 @@
             // If the selected segment layer is not added to the super layer, that means no
             // index is currently selected, so add the layer then move it to the new
             // segment index without animating.
-            if(self.selectionStyle == HMSegmentedControlSelectionStyleArrow) {
+            if(self.selectionStyle == NHMSegmentedControlSelectionStyleArrow) {
                 if ([self.selectionIndicatorArrowLayer superlayer] == nil) {
                     [self.scrollView.layer addSublayer:self.selectionIndicatorArrowLayer];
                     
@@ -994,7 +1002,7 @@
                 if ([self.selectionIndicatorStripLayer superlayer] == nil) {
                     [self.scrollView.layer addSublayer:self.selectionIndicatorStripLayer];
                     
-                    if (self.selectionStyle == HMSegmentedControlSelectionStyleBox && [self.selectionIndicatorBoxLayer superlayer] == nil)
+                    if (self.selectionStyle == NHMSegmentedControlSelectionStyleBox && [self.selectionIndicatorBoxLayer superlayer] == nil)
                         [self.scrollView.layer insertSublayer:self.selectionIndicatorBoxLayer atIndex:0];
                     
                     [self setSelectedSegmentIndex:index animated:NO notify:YES];
@@ -1075,11 +1083,11 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    for (HMAccessibilityElement *element in self.accessibilityElements) {
+    for (NHMAccessibilityElement *element in self.accessibilityElements) {
         NSUInteger idx = [self.accessibilityElements indexOfObject:element];
         CGFloat offset = 0.f;
         for (int i = 0; i<idx; i++) {
-            HMAccessibilityElement *elem = [self.accessibilityElements objectAtIndex:i];
+            NHMAccessibilityElement *elem = [self.accessibilityElements objectAtIndex:i];
             offset += elem.accessibilityFrame.size.width;
         }
         CGRect rect = CGRectMake(offset-scrollView.contentOffset.x, 0, element.accessibilityFrame.size.width, element.accessibilityFrame.size.height);
@@ -1087,7 +1095,7 @@
     }
 }
 
-#pragma mark - HMAccessibilityDelegate
+#pragma mark - NHMAccessibilityDelegate
 
 - (void)scrollToAccessibilityElement:(id)sender {
     NSUInteger index = [self.accessibilityElements indexOfObject:sender];

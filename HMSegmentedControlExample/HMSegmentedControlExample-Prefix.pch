@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'HMSegmentedControlExample' target in the 'HMSegmentedControlExample' project
+// Prefix header for all source files of the 'NHMSegmentedControlExample' target in the 'NHMSegmentedControlExample' project
 //
 
 #import <Availability.h>

@@ -1,6 +1,6 @@
 //
-//  HMSegmentedControl.h
-//  HMSegmentedControl
+//  NHMSegmentedControl.h
+//  NHMSegmentedControl
 //
 //  Created by Maxime Epain on 05/10/2016.
 //  Copyright © 2012-2015 Hesham Abd-Elmegid. All rights reserved.
@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for HMSegmentedControl.
-FOUNDATION_EXPORT double HMSegmentedControlVersionNumber;
+//! Project version number for NHMSegmentedControl.
+FOUNDATION_EXPORT double NHMSegmentedControlVersionNumber;
 
-//! Project version string for HMSegmentedControl.
-FOUNDATION_EXPORT const unsigned char HMSegmentedControlVersionString[];
+//! Project version string for NHMSegmentedControl.
+FOUNDATION_EXPORT const unsigned char NHMSegmentedControlVersionString[];
 
-#import <HMSegmentedControl/HMSegmentedControl.h>
+#import <NHMSegmentedControl/NHMSegmentedControl.h>
 
 

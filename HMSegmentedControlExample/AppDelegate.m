@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  HMSegmentedControlExample
+//  NHMSegmentedControlExample
 //
 //  Created by Hesham Abd-Elmegid on 25/12/12.
 //  Copyright (c) 2012 Hesham Abd-Elmegid. All rights reserved.

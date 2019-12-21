@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9C1632E71DA57214001FB468 /* HMSegmentedControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1632E41DA57214001FB468 /* HMSegmentedControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C1632EC1DA57220001FB468 /* HMSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1632EA1DA57220001FB468 /* HMSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C1632ED1DA57220001FB468 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1632EB1DA57220001FB468 /* HMSegmentedControl.m */; };
+		9C1632EC1DA57220001FB468 /* NHMSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C1632EA1DA57220001FB468 /* NHMSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C1632ED1DA57220001FB468 /* NHMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1632EB1DA57220001FB468 /* NHMSegmentedControl.m */; };
 		9C1633241DA57320001FB468 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C16330A1DA57320001FB468 /* AppDelegate.m */; };
 		9C1633271DA57320001FB468 /* 1-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1633111DA57320001FB468 /* 1-selected.png */; };
 		9C1633281DA57320001FB468 /* 1-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1633121DA57320001FB468 /* 1-selected@2x.png */; };
@@ -29,8 +29,8 @@
 		9C1633361DA57320001FB468 /* 4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1633201DA57320001FB468 /* 4@2x.png */; };
 		9C1633371DA57320001FB468 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1633211DA57320001FB468 /* Launch Screen.xib */; };
 		9C1633381DA57320001FB468 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1633231DA57320001FB468 /* ViewController.m */; };
-		9C16333B1DA573C5001FB468 /* HMSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1632D81DA57134001FB468 /* HMSegmentedControl.framework */; };
-		9C16333C1DA573C5001FB468 /* HMSegmentedControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1632D81DA57134001FB468 /* HMSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C16333B1DA573C5001FB468 /* NHMSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1632D81DA57134001FB468 /* NHMSegmentedControl.framework */; };
+		9C16333C1DA573C5001FB468 /* NHMSegmentedControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1632D81DA57134001FB468 /* NHMSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C1633421DA574EB001FB468 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1633411DA574EB001FB468 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9C16333C1DA573C5001FB468 /* HMSegmentedControl.framework in Embed Frameworks */,
+				9C16333C1DA573C5001FB468 /* NHMSegmentedControl.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,13 +59,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9C1632D81DA57134001FB468 /* HMSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1632D81DA57134001FB468 /* NHMSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NHMSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1632E41DA57214001FB468 /* HMSegmentedControl-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMSegmentedControl-umbrella.h"; sourceTree = "<group>"; };
 		9C1632E51DA57214001FB468 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C1632E61DA57214001FB468 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		9C1632EA1DA57220001FB468 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
-		9C1632EB1DA57220001FB468 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
-		9C1632F21DA572BA001FB468 /* HMSegmentedControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMSegmentedControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1632EA1DA57220001FB468 /* NHMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHMSegmentedControl.h; sourceTree = "<group>"; };
+		9C1632EB1DA57220001FB468 /* NHMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHMSegmentedControl.m; sourceTree = "<group>"; };
+		9C1632F21DA572BA001FB468 /* NHMSegmentedControlExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHMSegmentedControlExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1633091DA57320001FB468 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C16330A1DA57320001FB468 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C16330E1DA57320001FB468 /* HMSegmentedControlExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HMSegmentedControlExample-Info.plist"; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C16333B1DA573C5001FB468 /* HMSegmentedControl.framework in Frameworks */,
+				9C16333B1DA573C5001FB468 /* NHMSegmentedControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,8 +124,8 @@
 		9C1632D91DA57134001FB468 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C1632D81DA57134001FB468 /* HMSegmentedControl.framework */,
-				9C1632F21DA572BA001FB468 /* HMSegmentedControlExample.app */,
+				9C1632D81DA57134001FB468 /* NHMSegmentedControl.framework */,
+				9C1632F21DA572BA001FB468 /* NHMSegmentedControlExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,8 +143,8 @@
 		9C1632E91DA57220001FB468 /* HMSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				9C1632EA1DA57220001FB468 /* HMSegmentedControl.h */,
-				9C1632EB1DA57220001FB468 /* HMSegmentedControl.m */,
+				9C1632EA1DA57220001FB468 /* NHMSegmentedControl.h */,
+				9C1632EB1DA57220001FB468 /* NHMSegmentedControl.m */,
 			);
 			path = HMSegmentedControl;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1632EC1DA57220001FB468 /* HMSegmentedControl.h in Headers */,
+				9C1632EC1DA57220001FB468 /* NHMSegmentedControl.h in Headers */,
 				9C1632E71DA57214001FB468 /* HMSegmentedControl-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +226,7 @@
 			);
 			name = HMSegmentedControl;
 			productName = HMSegmentedControl;
-			productReference = 9C1632D81DA57134001FB468 /* HMSegmentedControl.framework */;
+			productReference = 9C1632D81DA57134001FB468 /* NHMSegmentedControl.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9C1632F11DA572BA001FB468 /* HMSegmentedControlExample */ = {
@@ -245,7 +245,7 @@
 			);
 			name = HMSegmentedControlExample;
 			productName = HMSegmentedControlExample;
-			productReference = 9C1632F21DA572BA001FB468 /* HMSegmentedControlExample.app */;
+			productReference = 9C1632F21DA572BA001FB468 /* NHMSegmentedControlExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -274,6 +274,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -327,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1632ED1DA57220001FB468 /* HMSegmentedControl.m in Sources */,
+				9C1632ED1DA57220001FB468 /* NHMSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,8 +464,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Framework/module.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.HMSegmentedControl;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.NHMSegmentedControl;
+				PRODUCT_NAME = NHMSegmentedControl;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -482,8 +483,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = Framework/module.modulemap;
-				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.HMSegmentedControl;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.NHMSegmentedControl;
+				PRODUCT_NAME = NHMSegmentedControl;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -494,8 +495,8 @@
 				DEVELOPMENT_TEAM = C75GEDTP26;
 				INFOPLIST_FILE = "$(SRCROOT)/HMSegmentedControlExample/HMSegmentedControlExample-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.HMSegmentedControlExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.NHMSegmentedControlExample;
+				PRODUCT_NAME = NHMSegmentedControlExample;
 			};
 			name = Debug;
 		};
@@ -505,8 +506,8 @@
 				DEVELOPMENT_TEAM = C75GEDTP26;
 				INFOPLIST_FILE = "$(SRCROOT)/HMSegmentedControlExample/HMSegmentedControlExample-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.HMSegmentedControlExample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heshammegid.NHMSegmentedControlExample;
+				PRODUCT_NAME = NHMSegmentedControlExample;
 			};
 			name = Release;
 		};

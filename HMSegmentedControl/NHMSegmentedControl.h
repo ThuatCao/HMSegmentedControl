@@ -1,6 +1,6 @@
 //
-//  HMSegmentedControl.h
-//  HMSegmentedControl
+//  NHMSegmentedControl.h
+//  NHMSegmentedControl
 //
 //  Created by Hesham Abd-Elmegid on 23/12/12.
 //  Copyright (c) 2012-2015 Hesham Abd-Elmegid. All rights reserved.
@@ -8,56 +8,57 @@
 
 #import <UIKit/UIKit.h>
 
-@class HMSegmentedControl;
+@class NHMSegmentedControl;
 
 typedef void (^IndexChangeBlock)(NSInteger index);
-typedef NSAttributedString *(^HMTitleFormatterBlock)(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
+typedef NSAttributedString *(^NHMTitleFormatterBlock)(NHMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
-typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionStyle) {
-    HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
-    HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
-    HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
-    HMSegmentedControlSelectionStyleArrow // An arrow in the middle of the segment pointing up or down depending on `HMSegmentedControlSelectionIndicatorLocation`
+typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionStyle) {
+    NHMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
+    NHMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
+    NHMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
+    NHMSegmentedControlSelectionStyleArrow, // An arrow in the middle of the segment pointing up or down depending on `NHMSegmentedControlSelectionIndicatorLocation`
+    NNHMSegmentedControlSelectionStyleMidleText
 };
 
-typedef NS_ENUM(NSInteger, HMSegmentedControlSelectionIndicatorLocation) {
-    HMSegmentedControlSelectionIndicatorLocationUp,
-    HMSegmentedControlSelectionIndicatorLocationDown,
-	HMSegmentedControlSelectionIndicatorLocationNone // No selection indicator
+typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionIndicatorLocation) {
+    NHMSegmentedControlSelectionIndicatorLocationUp,
+    NHMSegmentedControlSelectionIndicatorLocationDown,
+	NHMSegmentedControlSelectionIndicatorLocationNone // No selection indicator
 };
 
-typedef NS_ENUM(NSInteger, HMSegmentedControlSegmentWidthStyle) {
-    HMSegmentedControlSegmentWidthStyleFixed, // Segment width is fixed
-    HMSegmentedControlSegmentWidthStyleDynamic, // Segment width will only be as big as the text width (including inset)
+typedef NS_ENUM(NSInteger, NHMSegmentedControlSegmentWidthStyle) {
+    NHMSegmentedControlSegmentWidthStyleFixed, // Segment width is fixed
+    NHMSegmentedControlSegmentWidthStyleDynamic, // Segment width will only be as big as the text width (including inset)
 };
 
-typedef NS_OPTIONS(NSInteger, HMSegmentedControlBorderType) {
-    HMSegmentedControlBorderTypeNone = 0,
-    HMSegmentedControlBorderTypeTop = (1 << 0),
-    HMSegmentedControlBorderTypeLeft = (1 << 1),
-    HMSegmentedControlBorderTypeBottom = (1 << 2),
-    HMSegmentedControlBorderTypeRight = (1 << 3)
+typedef NS_OPTIONS(NSInteger, NHMSegmentedControlBorderType) {
+    NHMSegmentedControlBorderTypeNone = 0,
+    NHMSegmentedControlBorderTypeTop = (1 << 0),
+    NHMSegmentedControlBorderTypeLeft = (1 << 1),
+    NHMSegmentedControlBorderTypeBottom = (1 << 2),
+    NHMSegmentedControlBorderTypeRight = (1 << 3)
 };
 
 enum {
-    HMSegmentedControlNoSegment = -1   // Segment index for no selected segment
+    NHMSegmentedControlNoSegment = -1   // Segment index for no selected segment
 };
 
-typedef NS_ENUM(NSInteger, HMSegmentedControlType) {
-    HMSegmentedControlTypeText,
-    HMSegmentedControlTypeImages,
-	HMSegmentedControlTypeTextImages
+typedef NS_ENUM(NSInteger, NHMSegmentedControlType) {
+    NHMSegmentedControlTypeText,
+    NHMSegmentedControlTypeImages,
+	NHMSegmentedControlTypeTextImages
 };
 
-typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
-    HMSegmentedControlImagePositionBehindText,
-    HMSegmentedControlImagePositionLeftOfText,
-    HMSegmentedControlImagePositionRightOfText,
-    HMSegmentedControlImagePositionAboveText,
-    HMSegmentedControlImagePositionBelowText
+typedef NS_ENUM(NSInteger, NHMSegmentedControlImagePosition) {
+    NHMSegmentedControlImagePositionBehindText,
+    NHMSegmentedControlImagePositionLeftOfText,
+    NHMSegmentedControlImagePositionRightOfText,
+    NHMSegmentedControlImagePositionAboveText,
+    NHMSegmentedControlImagePositionBelowText
 };
 
-@interface HMSegmentedControl : UIControl
+@interface NHMSegmentedControl : UIControl
 
 @property (nonatomic, strong) NSArray<NSString *> *sectionTitles;
 @property (nonatomic, strong) NSArray<UIImage *> *sectionImages;
@@ -75,7 +76,7 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
  
  When this block is set, no additional styling is applied to the `NSAttributedString` object returned from this block.
  */
-@property (nonatomic, copy) HMTitleFormatterBlock titleFormatter;
+@property (nonatomic, copy) NHMTitleFormatterBlock titleFormatter;
 
 /**
  Text attributes to apply to item title text.
@@ -134,47 +135,47 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
 /**
  Specifies the style of the control
  
- Default is `HMSegmentedControlTypeText`
+ Default is `NHMSegmentedControlTypeText`
  */
-@property (nonatomic, assign) HMSegmentedControlType type;
+@property (nonatomic, assign) NHMSegmentedControlType type;
 
 /**
  Specifies the style of the selection indicator.
  
- Default is `HMSegmentedControlSelectionStyleTextWidthStripe`
+ Default is `NHMSegmentedControlSelectionStyleTextWidthStripe`
  */
-@property (nonatomic, assign) HMSegmentedControlSelectionStyle selectionStyle;
+@property (nonatomic, assign) NHMSegmentedControlSelectionStyle selectionStyle;
 
 /**
  Specifies the style of the segment's width.
  
- Default is `HMSegmentedControlSegmentWidthStyleFixed`
+ Default is `NHMSegmentedControlSegmentWidthStyleFixed`
  */
-@property (nonatomic, assign) HMSegmentedControlSegmentWidthStyle segmentWidthStyle;
+@property (nonatomic, assign) NHMSegmentedControlSegmentWidthStyle segmentWidthStyle;
 
 /**
  Specifies the location of the selection indicator.
  
- Default is `HMSegmentedControlSelectionIndicatorLocationUp`
+ Default is `NHMSegmentedControlSelectionIndicatorLocationUp`
  */
-@property (nonatomic, assign) HMSegmentedControlSelectionIndicatorLocation selectionIndicatorLocation;
+@property (nonatomic, assign) NHMSegmentedControlSelectionIndicatorLocation selectionIndicatorLocation;
 
 /*
  Specifies the border type.
  
- Default is `HMSegmentedControlBorderTypeNone`
+ Default is `NHMSegmentedControlBorderTypeNone`
  */
-@property (nonatomic, assign) HMSegmentedControlBorderType borderType;
+@property (nonatomic, assign) NHMSegmentedControlBorderType borderType;
 
 /**
- Specifies the image position relative to the text. Only applicable for HMSegmentedControlTypeTextImages
+ Specifies the image position relative to the text. Only applicable for NHMSegmentedControlTypeTextImages
  
- Default is `HMSegmentedControlImagePositionBehindText`
+ Default is `NHMSegmentedControlImagePositionBehindText`
  */
-@property (nonatomic) HMSegmentedControlImagePosition imagePosition;
+@property (nonatomic) NHMSegmentedControlImagePosition imagePosition;
 
 /**
- Specifies the distance between the text and the image. Only applicable for HMSegmentedControlTypeTextImages
+ Specifies the distance between the text and the image. Only applicable for NHMSegmentedControlTypeTextImages
  
  Default is `0,0`
  */
@@ -217,7 +218,7 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;
 
 /**
- Height of the selection indicator. Only effective when `HMSegmentedControlSelectionStyle` is either `HMSegmentedControlSelectionStyleTextWidthStripe` or `HMSegmentedControlSelectionStyleFullWidthStripe`.
+ Height of the selection indicator. Only effective when `NHMSegmentedControlSelectionStyle` is either `NHMSegmentedControlSelectionStyleTextWidthStripe` or `NHMSegmentedControlSelectionStyleFullWidthStripe`.
  
  Default is 5.0
  */
@@ -225,11 +226,11 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
 
 /**
  Edge insets for the selection indicator.
- NOTE: This does not affect the bounding box of HMSegmentedControlSelectionStyleBox
+ NOTE: This does not affect the bounding box of NHMSegmentedControlSelectionStyleBox
  
- When HMSegmentedControlSelectionIndicatorLocationUp is selected, bottom edge insets are not used
+ When NHMSegmentedControlSelectionIndicatorLocationUp is selected, bottom edge insets are not used
  
- When HMSegmentedControlSelectionIndicatorLocationDown is selected, top edge insets are not used
+ When NHMSegmentedControlSelectionIndicatorLocationDown is selected, top edge insets are not used
  
  Defaults are top: 0.0f
              left: 0.0f
@@ -257,6 +258,6 @@ typedef NS_ENUM(NSInteger, HMSegmentedControlImagePosition) {
 - (instancetype)initWithSectionImages:(NSArray<UIImage *> *)sectionImages sectionSelectedImages:(NSArray<UIImage *> *)sectionSelectedImages titlesForSections:(NSArray<NSString *> *)sectiontitles;
 - (void)setSelectedSegmentIndex:(NSUInteger)index animated:(BOOL)animated;
 - (void)setIndexChangeBlock:(IndexChangeBlock)indexChangeBlock;
-- (void)setTitleFormatter:(HMTitleFormatterBlock)titleFormatter;
+- (void)setTitleFormatter:(NHMTitleFormatterBlock)titleFormatter;
 
 @end
