@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-@import NHMSegmentedControl;
+#import "NHMSegmentedControl.h"
+//@import NHMSegmentedControl;
 
 @interface ViewController ()
 
@@ -28,23 +29,28 @@
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     
     // Minimum code required to use the segmented control with the default styling.
-    NHMSegmentedControl *segmentedControl = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"Trending", @"News", @"Library"]];
+    NHMSegmentedControl *segmentedControl = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"Trending", @"Newsdfgsfdgfds", @"Library"]];
     segmentedControl.frame = CGRectMake(0, 20, viewWidth, 40);
     segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+   
+     segmentedControl.indicatorWidth = 32;
+    segmentedControl.selectionStyle = NNHMSegmentedControlSelectionStyleLeftText;
+     segmentedControl.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleDynamic;
     [segmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
     
     
     // Segmented control with scrolling
-    NHMSegmentedControl *segmentedControl1 = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"Four", @"Five", @"Six", @"Seven", @"Eight"]];
+    NHMSegmentedControl *segmentedControl1 = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three"/*, @"Four", @"Five", @"Six", @"Seven", @"Eight"*/]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(0, 60, viewWidth, 40);
-    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    segmentedControl1.selectionStyle = NHMSegmentedControlSelectionStyleFullWidthStripe;
+    segmentedControl1.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleDynamic;
+    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 12, 0, 12);
+    segmentedControl.indicatorWidth = 32;
+    segmentedControl.selectionStyle = NNHMSegmentedControlSelectionStyleLeftText;
     segmentedControl1.selectionIndicatorLocation = NHMSegmentedControlSelectionIndicatorLocationDown;
-    segmentedControl1.verticalDividerEnabled = YES;
-    segmentedControl1.verticalDividerColor = [UIColor blackColor];
-    segmentedControl1.verticalDividerWidth = 1.0f;
+    segmentedControl1.selectionIndicatorHeight = 3;
+    
     [segmentedControl1 setTitleFormatter:^NSAttributedString *(NHMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
         NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
         return attString;
@@ -78,7 +84,7 @@
 
     
 //     Segmented control with more customization and indexChangeBlock
-    NHMSegmentedControl *segmentedControl3 = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three", @"4", @"Five"]];
+    NHMSegmentedControl *segmentedControl3 = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three"/*, @"4", @"Five"*/]];
     [segmentedControl3 setFrame:CGRectMake(0, 180, viewWidth, 50)];
     [segmentedControl3 setIndexChangeBlock:^(NSInteger index) {
         NSLog(@"Selected index %ld (via block)", (long)index);

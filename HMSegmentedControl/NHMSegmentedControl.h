@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionStyle) {
     NHMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
     NHMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
     NHMSegmentedControlSelectionStyleArrow, // An arrow in the middle of the segment pointing up or down depending on `NHMSegmentedControlSelectionIndicatorLocation`
-    NNHMSegmentedControlSelectionStyleMidleText
+    NNHMSegmentedControlSelectionStyleMidleText,
+    NNHMSegmentedControlSelectionStyleLeftText
 };
 
 typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionIndicatorLocation) {
@@ -64,10 +65,14 @@ typedef NS_ENUM(NSInteger, NHMSegmentedControlImagePosition) {
 @property (nonatomic, strong) NSArray<UIImage *> *sectionImages;
 @property (nonatomic, strong) NSArray<UIImage *> *sectionSelectedImages;
 
+@property (nonatomic, assign) CGFloat indicatorWidth;
+
 /**
  Provide a block to be executed when selected index is changed.
  
  Alternativly, you could use `addTarget:action:forControlEvents:`
+ 
+ 
  */
 @property (nonatomic, copy) IndexChangeBlock indexChangeBlock;
 
