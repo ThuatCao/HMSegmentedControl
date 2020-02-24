@@ -321,7 +321,7 @@
             CGRect fullRect = CGRectZero;
             
             // Text inside the CATextLayer will appear blurry unless the rect values are rounded
-            BOOL locationUp = (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp);
+            BOOL locationUp =  false;//(self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp);
             BOOL selectionStyleNotBox = (self.selectionStyle != NHMSegmentedControlSelectionStyleBox);
             
             CGFloat y = roundf((CGRectGetHeight(self.frame) - selectionStyleNotBox * self.selectionIndicatorHeight) / 2 - stringHeight / 2 + self.selectionIndicatorHeight * locationUp);
@@ -402,7 +402,7 @@
             UIImage *icon = iconImage;
             CGFloat imageWidth = icon.size.width;
             CGFloat imageHeight = icon.size.height;
-            CGFloat y = roundf(CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2 - imageHeight / 2 + ((self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) ? self.selectionIndicatorHeight : 0);
+            CGFloat y = roundf(CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2 - imageHeight / 2 /*+ ((self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) ? self.selectionIndicatorHeight : 0)*/;
             CGFloat x = self.segmentWidth * idx + (self.segmentWidth - imageWidth)/2.0f;
             CGRect rect = CGRectMake(x, y, imageWidth, imageHeight);
             
@@ -657,17 +657,17 @@
     CGPoint p2 = CGPointZero;
     CGPoint p3 = CGPointZero;
     
-    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
+//    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
         p1 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width / 2, 0);
         p2 = CGPointMake(0, self.selectionIndicatorArrowLayer.bounds.size.height);
         p3 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width, self.selectionIndicatorArrowLayer.bounds.size.height);
-    }
+//    }
     
-    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
-        p1 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width / 2, self.selectionIndicatorArrowLayer.bounds.size.height);
-        p2 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width, 0);
-        p3 = CGPointMake(0, 0);
-    }
+//    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
+//        p1 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width / 2, self.selectionIndicatorArrowLayer.bounds.size.height);
+//        p2 = CGPointMake(self.selectionIndicatorArrowLayer.bounds.size.width, 0);
+//        p3 = CGPointMake(0, 0);
+//    }
     
     [arrowPath moveToPoint:p1];
     [arrowPath addLineToPoint:p2];
@@ -683,13 +683,13 @@
 - (CGRect)frameForSelectionIndicator {
     CGFloat indicatorYOffset = 0.0f;
     
-    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
+   // if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationDown) {
         indicatorYOffset = self.bounds.size.height - self.selectionIndicatorHeight + self.selectionIndicatorEdgeInsets.bottom;
-    }
+  //  }
     
-    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
-        indicatorYOffset = self.selectionIndicatorEdgeInsets.top;
-    }
+//    if (self.selectionIndicatorLocation == NHMSegmentedControlSelectionIndicatorLocationUp) {
+//        indicatorYOffset = self.selectionIndicatorEdgeInsets.top;
+//    }
     
     CGFloat sectionWidth = 0.0f;
     

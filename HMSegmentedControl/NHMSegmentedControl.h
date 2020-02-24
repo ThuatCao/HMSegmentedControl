@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionStyle) {
 };
 
 typedef NS_ENUM(NSInteger, NHMSegmentedControlSelectionIndicatorLocation) {
-    NHMSegmentedControlSelectionIndicatorLocationUp,
+    /*NHMSegmentedControlSelectionIndicatorLocationUp,*/
     NHMSegmentedControlSelectionIndicatorLocationDown,
 	NHMSegmentedControlSelectionIndicatorLocationNone // No selection indicator
 };
