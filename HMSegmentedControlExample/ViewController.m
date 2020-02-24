@@ -44,10 +44,10 @@
     NHMSegmentedControl *segmentedControl1 = [[NHMSegmentedControl alloc] initWithSectionTitles:@[@"One", @"Two", @"Three"/*, @"Four", @"Five", @"Six", @"Seven", @"Eight"*/]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(0, 60, viewWidth, 40);
-    segmentedControl1.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleDynamic;
+    //segmentedControl1.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleDynamic;
     segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 12, 0, 12);
     segmentedControl.indicatorWidth = 32;
-    segmentedControl.selectionStyle = NNHMSegmentedControlSelectionStyleLeftText;
+    segmentedControl.selectionStyle = NNHMSegmentedControlSelectionStyleMidleText;
     segmentedControl1.selectionIndicatorLocation = NHMSegmentedControlSelectionIndicatorLocationDown;
     segmentedControl1.selectionIndicatorHeight = 3;
     

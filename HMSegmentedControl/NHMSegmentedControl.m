@@ -160,7 +160,7 @@
     self.selectionIndicatorHeight = 5.0f;
     self.selectionIndicatorEdgeInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
     self.selectionStyle = NHMSegmentedControlSelectionStyleTextWidthStripe;
-    self.selectionIndicatorLocation = NHMSegmentedControlSelectionIndicatorLocationUp;
+    self.selectionIndicatorLocation = NHMSegmentedControlSelectionIndicatorLocationDown;
     self.segmentWidthStyle = NHMSegmentedControlSegmentWidthStyleFixed;
     self.userDraggable = YES;
     self.touchEnabled = YES;
